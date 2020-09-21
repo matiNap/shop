@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "lint": "eslint",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +49,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-jest": "^26.3.0",
+    "eslint": "^7.9.0",
     "react-test-renderer": "^16.13.1"
   }
 }
