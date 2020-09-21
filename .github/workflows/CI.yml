@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+  push:
+    branches: [ master ]
+
+defaults:
+  run:
+    shell: bash
+    working-directory: app
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use node ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install packages
+      run: yarn install
+    - name: Test
+      run: |
+        yarn run lint
+        yarn run tsc
+        yarn run test
+      
+    - name: Build
+      env:
+         FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
+      run: yarn run build
+      
+    - name: Deploy
+      env:
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
+      run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          yarn run deploy
