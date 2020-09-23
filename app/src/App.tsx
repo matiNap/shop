@@ -9,18 +9,16 @@ import { MAIN } from "./navRoutes";
 import ThemeProvider from "./ThemeProvider";
 import withNavigation from "./hocs/withNavigation";
 
-export default () => {
-  return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistedStore}>
-        <ThemeProvider>
-          <Router>
-            <Switch>
-              <Route exact path={MAIN} component={withNavigation(Main)} />
-            </Switch>
-          </Router>
-        </ThemeProvider>
-      </PersistGate>
-    </Provider>
-  );
-};
+export default () => (
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistedStore}>
+      <ThemeProvider>
+        <Router>
+          <Switch>
+            <Route exact path={MAIN} component={withNavigation(Main)} />
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </PersistGate>
+  </Provider>
+);

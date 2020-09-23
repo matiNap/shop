@@ -1,3 +1,3 @@
 module.exports = {
-  setupFiles: ["<rootDir>/enzyme.js"],
+  setupFiles: ['<rootDir>/enzyme.js'],
 };
