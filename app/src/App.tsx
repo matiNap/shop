@@ -6,19 +6,17 @@ import store, { persistedStore } from "./store";
 import Main from "./screens/Main";
 import { MAIN } from "./navRoutes";
 
-import ThemeProvider from "./ThemeProvider";
 import withNavigation from "./hocs/withNavigation";
+import "./style.scss";
 
 export default () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistedStore}>
-      <ThemeProvider>
-        <Router>
-          <Switch>
-            <Route exact path={MAIN} component={withNavigation(Main)} />
-          </Switch>
-        </Router>
-      </ThemeProvider>
+      <Router>
+        <Switch>
+          <Route exact path={MAIN} component={withNavigation(Main)} />
+        </Switch>
+      </Router>
     </PersistGate>
   </Provider>
 );

@@ -1,0 +1,21 @@
+@import "../../colors.scss";
+
+.header-container {
+  background-color: $primary-color;
+
+  div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  a {
+    margin-right: 1rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .selected {
+    text-decoration-line: underline;
+  }
+}

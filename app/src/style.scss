@@ -1,0 +1,17 @@
+@import "./colors.scss";
+
+body {
+  background-color: $secondary-color;
+}
+
+* {
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  padding: 0;
+  color: $primary-text-color;
+  font-size: 1rem;
+}
+
+a {
+  text-decoration-line: none;
+}
