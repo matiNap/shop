@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAGA,IACE,oBAHmB","file":"main.f9bec969.chunk.css","sourcesContent":["$primary-color: #fff;\n$secondary-color: red;\n\ndiv {\n  background-color: $secondary-color;\n}\n"]}
