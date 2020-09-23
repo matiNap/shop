@@ -22,7 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "lint": "eslint .src/",
+    "lint": "eslint ./src/",
     "lint:fix": "eslint ./src/ --fix",
     "tsc": "tsc --noEmit",
     "deploy": "gh-pages -d build"
