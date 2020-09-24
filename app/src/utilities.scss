@@ -1,0 +1,25 @@
+$primary-color: #2d2d2d;
+$secondary-color: #444444;
+
+$primary-text-color: #f2f2f2;
+$secondary-text-color: #2f2f2f;
+
+$header-horizontal-space: 5rem;
+
+$font-size-small: 0.95rem;
+$font-size-normal: 1.05rem;
+$font-size-medium: 1.15rem;
+$font-size-big: 1.8rem;
+
+$spacing-small: 0.5rem;
+$spacing-normal: 1rem;
+$spacing-medium: 1.8rem;
+$spacing-big: 2.5rem;
+
+$border-radius-normal: 4px;
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}

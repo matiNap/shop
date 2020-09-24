@@ -1,14 +1,20 @@
-@import "../../colors.scss";
+@import "../../utilities.scss";
 
 .header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: $primary-color;
+  padding: 0 $header-horizontal-space 0 $header-horizontal-space;
+  align-items: center;
+  height: 7rem;
 
   div {
     display: flex;
     flex-direction: row;
   }
 
-  a {
+  .type {
     margin-right: 1rem;
     font-size: 1.3rem;
     text-transform: uppercase;
@@ -17,5 +23,111 @@
 
   .selected {
     text-decoration-line: underline;
+  }
+
+  //Middle menu in header
+  .nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .menu {
+      margin-top: 0.8rem;
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      a {
+        font-size: 1rem;
+        margin-right: 1rem;
+        text-transform: none;
+      }
+
+      li {
+        flex-direction: row;
+        display: flex;
+      }
+
+      &-space {
+        width: 2px;
+        height: 20px;
+        background-color: $primary-text-color;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  ///Right menu in header
+  .user-menu {
+    align-items: center;
+    .cart {
+      margin-right: $spacing-medium;
+      align-self: center;
+      display: flex;
+      position: relative;
+    }
+
+    .user {
+      cursor: pointer;
+    }
+
+    .login {
+      font-weight: bold;
+      font-size: $font-size-medium;
+      border-width: 2px;
+      border-color: white;
+      border-style: solid;
+      border-radius: $border-radius-normal;
+      padding: 0.3rem;
+      text-transform: none !important;
+    }
+
+    .select-flag {
+      margin-left: $spacing-medium;
+    }
+  }
+
+  //Badge for cart icon
+  .badge {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
+    background-color: #00aeff;
+    border: 2px solid $primary-text-color;
+    font-size: $font-size-small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -12px;
+    top: -10px;
+  }
+
+  //Account menu after click on user icon
+  .account-menu-container {
+    position: relative;
+
+    li {
+      font-size: $font-size-normal;
+      margin-top: $spacing-small;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .icon {
+      margin-right: $spacing-small;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      align-self: center;
+      background-color: $primary-text-color;
+      margin-top: $spacing-normal;
+      margin-bottom: $spacing-small;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }

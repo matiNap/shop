@@ -1,0 +1,35 @@
+@import "../../utilities.scss";
+
+.select-container {
+  display: flex;
+  position: relative;
+  height: max-content;
+  align-self: flex-end;
+  li {
+    flex-direction: row;
+    display: flex;
+    cursor: pointer;
+  }
+
+  p {
+    margin-left: $spacing-normal;
+    font-size: $font-size-normal;
+  }
+}
+
+.flag-container {
+  border-radius: 2px;
+  overflow: hidden;
+  height: fit-content;
+  width: 1.2rem;
+  height: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .flag {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
+}

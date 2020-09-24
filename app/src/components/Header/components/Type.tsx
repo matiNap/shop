@@ -12,7 +12,7 @@ export default ({ path, typeName }: Props) => {
   } = useHistory();
   const selected = pathname === path;
   return (
-    <Link to={path} className={selected ? "selected" : ""}>
+    <Link to={path} className={selected ? "type selected" : "type"}>
       {typeName}
     </Link>
   );
