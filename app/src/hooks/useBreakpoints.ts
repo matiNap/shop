@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 export default () => {
   const isBigScreen = useMediaQuery({ minWidth: 900 });
   const isMediumScreen = useMediaQuery({ maxWidth: 900 });
-  const isSmallScreen = useMediaQuery({ maxWidth: 800 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 600 });
 
   return {
     isBigScreen,

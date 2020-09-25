@@ -18,6 +18,9 @@ $spacing-big: 2.5rem;
 
 $border-radius-normal: 4px;
 
+$primary-breakpoint: 900px;
+$secondar-breakpoint: 600px;
+
 @mixin box-shadow($shadow...) {
   -webkit-box-shadow: $shadow;
   -moz-box-shadow: $shadow;

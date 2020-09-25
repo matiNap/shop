@@ -67,7 +67,9 @@ export default () => {
       <ul className="menu">
         {data.map(({ title, to }, index) => (
           <li key={title}>
-            <Link to={to}>{title}</Link>
+            <div className="label">
+              <Link to={to}>{title}</Link>
+            </div>
             {index < data.length - 1 && <div className="menu-space" />}
           </li>
         ))}

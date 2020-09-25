@@ -1,12 +1,15 @@
 @import "../../utilities.scss";
 
+$header-top: 7rem;
+
 header {
+  z-index: 10;
   display: flex;
   justify-content: center;
   flex-direction: column;
   background-color: $primary-color;
   padding: 0 $header-horizontal-space 0 $header-horizontal-space;
-  height: 7rem;
+  height: $header-top;
 
   .header-container {
     display: flex;
@@ -48,11 +51,18 @@ header {
         font-size: 1rem;
         margin-right: 1rem;
         text-transform: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       li {
         flex-direction: row;
         display: flex;
+      }
+
+      .label {
+        max-width: 8rem;
       }
 
       &-space {
@@ -136,18 +146,38 @@ header {
       margin-right: auto;
     }
   }
+
+  @media (max-width: $secondar-breakpoint) {
+    position: initial;
+  }
 }
 
 .menu-button {
-  height: 50px;
-  width: 50px;
-  display: flex;
-  flex-direction: column;
+  cursor: pointer;
 
-  &-dash {
-    // display: flex;
-    height: 10px;
-    width: 50px;
-    background-color: $primary-text-color;
+  .menu-icon {
+    color: $primary-text-color;
+  }
+}
+
+@media (max-width: $primary-breakpoint) {
+  header {
+    padding: 0 $spacing-normal 0 $spacing-normal;
+  }
+
+  .side-menu {
+    position: absolute;
+
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $secondary-color;
+    transition: top 0.2s ease;
+  }
+
+  .opened {
+    top: $header-top;
+    z-index: 5;
   }
 }

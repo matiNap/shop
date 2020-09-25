@@ -1,10 +1,10 @@
-import React from "react";
-import { FiMenu } from "react-icons/fi";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import { MAIN, MEN_HOME, WOMEN_HOME } from "../../navRoutes";
 import Logo from "../Logo";
 import MenuButton from "./components/MenuButton";
+import SideMenu from "./components/SideMenu";
 import TopClothesMenu from "./components/TopClothesMenu";
 import Type from "./components/Type";
 import UserMenu from "./components/UserMenu";
@@ -16,6 +16,7 @@ export default () => {
   } = useHistory();
   const menuVisible = pathname !== MAIN;
   const { isBigScreen, isMediumScreen, isSmallScreen } = useBreakpoints();
+  const [sideMenuOpened, setSideMenuOpened] = useState(false);
 
   return (
     <header>
@@ -28,7 +29,10 @@ export default () => {
                 <Type typeName="Men" path={MEN_HOME} />
               </>
             ) : (
-              <MenuButton />
+              <MenuButton
+                opened={sideMenuOpened}
+                switchOpened={() => setSideMenuOpened(!sideMenuOpened)}
+              />
             )}
           </div>
         )}
@@ -38,7 +42,17 @@ export default () => {
         </div>
         <UserMenu isMainPage={!menuVisible} />
       </div>
-      {isSmallScreen && <FiMenu />}
+      {isSmallScreen && (
+        <MenuButton
+          opened={sideMenuOpened}
+          switchOpened={() => setSideMenuOpened(!sideMenuOpened)}
+        />
+      )}
+      {!isBigScreen && (
+        <SideMenu opened={sideMenuOpened}>
+          <div>test</div>
+        </SideMenu>
+      )}
     </header>
   );
 };
