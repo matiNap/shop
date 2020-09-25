@@ -6,7 +6,8 @@ import "./style.scss";
 import { RootState } from "../../store";
 import { setLang } from "../../reducers/appReducer";
 import useBreakpoints from "../../hooks/useBreakpoints";
-import SideMenu from "../Header/components/SideMenu";
+import SideMenu from "../SideMenu";
+import SideMenuItem from "../SideMenuItem";
 
 const LANGS = [
   {
@@ -32,26 +33,44 @@ export default () => {
             countryCode={lang}
             aria-label="Unied States"
             svg
-            className="flag"
+            className="flag-selected"
           />
         </div>
         {isBigScreen && (
           <Dropdown opened={opened} close={() => setOpened(false)}>
-            {LANGS.map(({ code, label }) => (
-              <li key={code} onClick={() => dispatch(setLang(code))}>
+            {LANGS.map(({ code, label }, index) => (
+              <li
+                key={code}
+                onClick={() => dispatch(setLang(code))}
+                className={index === 0 ? "flag-item-first" : "flag-item"}
+              >
                 <ReactCountryFlag
                   countryCode={code}
                   aria-label={label}
                   svg
                   className="flag"
                 />
-                <p>{code}</p>
+                <p className="flag-label">{code}</p>
               </li>
             ))}
           </Dropdown>
         )}
       </div>
-      {!isBigScreen && <SideMenu opened={opened}>Select lang</SideMenu>}
+      {!isBigScreen && (
+        <SideMenu opened={opened} onClose={() => setOpened(false)}>
+          {LANGS.map(({ code, label }, index) => (
+            <SideMenuItem divider={index !== LANGS.length - 1}>
+              <ReactCountryFlag
+                countryCode={code}
+                aria-label={label}
+                svg
+                className="flag-"
+              />
+              <p className="flag-label">{code}</p>
+            </SideMenuItem>
+          ))}
+        </SideMenu>
+      )}
     </div>
   );
 };

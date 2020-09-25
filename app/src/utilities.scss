@@ -8,7 +8,7 @@ $header-horizontal-space: 5rem;
 
 $font-size-small: 0.95rem;
 $font-size-normal: 1.05rem;
-$font-size-medium: 1.15rem;
+$font-size-medium: 1.4rem;
 $font-size-big: 1.8rem;
 
 $spacing-small: 0.5rem;
@@ -19,7 +19,7 @@ $spacing-big: 2.5rem;
 $border-radius-normal: 4px;
 
 $primary-breakpoint: 900px;
-$secondar-breakpoint: 600px;
+$secondary-breakpoint: 600px;
 
 @mixin box-shadow($shadow...) {
   -webkit-box-shadow: $shadow;

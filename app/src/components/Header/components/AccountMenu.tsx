@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import { MAIN, ORDERS, PROFILE } from "../../../navRoutes";
 import Dropdown from "../../Dropdown";
 import useBreakpoints from "../../../hooks/useBreakpoints";
-import SideMenu from "./SideMenu";
+import SideMenu from "../../SideMenu";
+import SideMenuItem from "../../SideMenuItem";
 
 export default () => {
   const [opened, setOpened] = useState(false);
   const { isBigScreen } = useBreakpoints();
   return (
-    <div>
-      <div className="account-menu-container">
+    <div className="account-menu-container">
+      <div className="account-menu">
         <FiUser
           className="user"
           size={25}
@@ -21,24 +22,46 @@ export default () => {
         />
         {isBigScreen && (
           <Dropdown opened={opened} close={() => setOpened(false)}>
-            <li>
+            <li className="dropdown-item" style={{ marginTop: 0 }}>
               <FiUser size={20} className="icon" />
-              <Link to={PROFILE}>Profile</Link>
+              <Link to={PROFILE} className="label">
+                Profile
+              </Link>
             </li>
-            <li>
+            <li className="dropdown-item">
               <FiArchive size={20} className="icon" />
-              <Link to={ORDERS}>Orders</Link>
+              <Link to={ORDERS} className="label">
+                Orders
+              </Link>
             </li>
             <div className="divider"></div>
-            <li>
-              <Link to={MAIN}>Sign out</Link>
+            <li className="dropdown-item">
+              <Link to={MAIN} className="label">
+                Sign out
+              </Link>
             </li>
           </Dropdown>
         )}
       </div>
       {!isBigScreen && (
-        <SideMenu opened={opened}>
-          <div>user</div>
+        <SideMenu opened={opened} onClose={() => setOpened(false)}>
+          <SideMenuItem divider>
+            <FiUser size={20} className="icon" />
+            <Link to={PROFILE} className="label">
+              Profile
+            </Link>
+          </SideMenuItem>
+          <SideMenuItem divider>
+            <FiArchive size={20} className="icon" />
+            <Link to={ORDERS} className="label">
+              Orders
+            </Link>
+          </SideMenuItem>
+          <SideMenuItem>
+            <Link to={MAIN} className="label" style={{ fontWeight: "bold" }}>
+              Sign out
+            </Link>
+          </SideMenuItem>
         </SideMenu>
       )}
     </div>

@@ -4,7 +4,7 @@ import useBreakpoints from "../../hooks/useBreakpoints";
 import { MAIN, MEN_HOME, WOMEN_HOME } from "../../navRoutes";
 import Logo from "../Logo";
 import MenuButton from "./components/MenuButton";
-import SideMenu from "./components/SideMenu";
+import SideMenu from "../SideMenu";
 import TopClothesMenu from "./components/TopClothesMenu";
 import Type from "./components/Type";
 import UserMenu from "./components/UserMenu";

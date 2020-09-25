@@ -122,13 +122,27 @@ header {
 
   //Account menu after click on user icon
   .account-menu-container {
+    @media (min-width: $primary-breakpoint) {
+      .label {
+        font-size: $font-size-normal;
+      }
+    }
+    @media (max-width: $primary-breakpoint) {
+      .label {
+        font-size: $font-size-medium;
+        margin-left: $spacing-normal;
+      }
+    }
+  }
+  .account-menu {
     position: relative;
 
-    li {
-      font-size: $font-size-normal;
-      margin-top: $spacing-small;
+    .dropdown-item {
+      margin-top: $spacing-normal;
       display: flex;
       flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
 
     .icon {
@@ -147,7 +161,7 @@ header {
     }
   }
 
-  @media (max-width: $secondar-breakpoint) {
+  @media (max-width: $secondary-breakpoint) {
     position: initial;
   }
 }
@@ -163,21 +177,5 @@ header {
 @media (max-width: $primary-breakpoint) {
   header {
     padding: 0 $spacing-normal 0 $spacing-normal;
-  }
-
-  .side-menu {
-    position: absolute;
-
-    top: -100vh;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $secondary-color;
-    transition: top 0.2s ease;
-  }
-
-  .opened {
-    top: $header-top;
-    z-index: 5;
   }
 }
