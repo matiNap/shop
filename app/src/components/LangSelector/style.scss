@@ -10,11 +10,6 @@
     display: flex;
     cursor: pointer;
   }
-
-  p {
-    margin-left: $spacing-normal;
-    font-size: $font-size-normal;
-  }
 }
 
 .flag-container {
@@ -27,9 +22,37 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  .flag-selected {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
+}
 
+.flag-item {
+  margin-top: $spacing-normal;
+  &-first {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: $primary-breakpoint) {
   .flag {
     font-size: 1.2rem;
     line-height: 1.2rem;
+  }
+  .flag-label {
+    margin-left: $spacing-normal;
+    font-size: $font-size-normal;
+  }
+}
+@media (max-width: $primary-breakpoint) {
+  .flag {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .flag-label {
+    margin-left: $spacing-normal;
+    font-size: $font-size-big;
   }
 }
