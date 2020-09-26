@@ -15,3 +15,14 @@ a {
   text-decoration-line: none;
   cursor: pointer;
 }
+
+button {
+  padding: $spacing-small;
+  background-color: $accent-color;
+  border-width: 0;
+  border-radius: $border-radius-normal;
+  cursor: pointer;
+  font-size: $font-size-normal;
+  border: none;
+  outline: none;
+}

@@ -27,6 +27,7 @@ export default ({
         className="auth-input"
         placeholder={placeholder}
         onChange={(e) => onChangeText(e.currentTarget.value)}
+        autoComplete="off"
       />
     </div>
   );

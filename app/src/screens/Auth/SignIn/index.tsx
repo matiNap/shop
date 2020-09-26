@@ -1,13 +1,15 @@
+/* eslint react-hooks/exhaustive-deps: 0*/
+
 import React, { useCallback, useState } from "react";
 import { SIGN_UP } from "../../../navRoutes";
 import BottomRedirect from "../components/BottomRedirect";
-import Button from "../components/Button";
 import Container from "../components/Container";
 import ErrorText from "../components/ErrorText";
 import Input from "../components/Input";
 import Loading from "../components/Loading";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../../reducers/appReducer";
+import Title from "../components/Title";
 
 const isEmptyStr = (str: string) => str.length === 0;
 
@@ -37,14 +39,16 @@ export default () => {
     [email, password]
   );
   return (
-    <Container title="Sign in">
+    <Container>
       <form onSubmit={onSubmit} className="auth-form">
+        <Title title="Sign in" />
         <Input
           label="Email"
           placeholder="Enter your email"
           onChangeText={(text) => setEmail(text)}
           name="email"
           value={email}
+          type="email"
         />
 
         <Input
@@ -57,7 +61,7 @@ export default () => {
         />
 
         <div className="auth-button-container">
-          <Button>Sign in</Button>
+          <button className="auth-button">Sign in</button>
         </div>
       </form>
       <ErrorText>{error}</ErrorText>

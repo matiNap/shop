@@ -1,5 +1,20 @@
 @import "../../utilities.scss";
 
+@mixin input-style {
+  border-radius: $border-radius-normal;
+  background-color: darken($primary-color, 10%) !important;
+  border-width: 0;
+  color: $primary-text-color;
+  font-size: $font-size-medium;
+  padding: $spacing-small;
+}
+
+.route-screen {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
 .auth {
   &-container {
     padding: $spacing-medium $spacing-medium $spacing-big $spacing-medium;
@@ -14,8 +29,8 @@
   &-title {
     display: flex;
     align-self: center;
-    margin-top: $spacing-big;
     justify-content: center;
+    margin-top: $spacing-medium;
   }
 
   &-input-container {
@@ -23,24 +38,33 @@
     flex-direction: column;
     margin-top: $spacing-medium;
     width: 100%;
-  }
+    input {
+      @include input-style();
+    }
 
-  &-input {
-    border-radius: $border-radius-normal;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-width: 0;
-    color: $primary-text-color;
-    font-size: $font-size-medium;
-    padding: $spacing-small;
+    input:focus {
+      outline: none;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      @include input-style();
+      border: none;
+      -webkit-text-fill-color: $primary-text-color;
+      -webkit-box-shadow: 0 0 0px 1000px darken($primary-color, 10%) inset;
+    }
   }
 
   &-input-label {
     font-size: $font-size-medium;
     margin-bottom: $spacing-small;
-  }
-
-  &-input:focus-visible {
-    border: none;
   }
 
   &-button-container {
@@ -52,13 +76,8 @@
   }
 
   &-button {
-    padding: $spacing-small;
-    background-color: $accent-color;
-    border-width: 0;
-    border-radius: $border-radius-normal;
     font-size: $font-size-medium;
     font-weight: bold;
-    cursor: pointer;
   }
 
   &-bottom-info {
@@ -80,7 +99,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
+      @include box-shadow(0px 3px 14px 0px rgba(0, 0, 0, 0.75));
       align-self: center;
       margin-top: $spacing-medium;
       background-color: $primary-color;
@@ -99,15 +118,18 @@
 }
 
 @media (min-width: $primary-breakpoint) {
-  .sign-up-container {
+  .route-container {
     width: 55%;
-    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media (max-width: $primary-breakpoint) {
-  .sign-up-container {
+  .route-container {
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     align-self: center;
   }
 }
@@ -122,4 +144,36 @@
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.auth-success-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .success-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $primary-color;
+    border-radius: $border-radius-normal;
+    padding: $spacing-medium;
+  }
+
+  .success-button {
+    font-size: $font-size-medium;
+    font-weight: bold;
+    margin-top: $spacing-medium;
+    width: 5rem;
+  }
+
+  .success-icon {
+    color: $success-color;
+    margin: $spacing-normal 0 $spacing-normal 0;
+  }
 }

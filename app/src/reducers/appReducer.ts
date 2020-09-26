@@ -30,7 +30,7 @@ const appSlice = createSlice({
     [REHYDRATE]: (state, action) => {
       const app =
         action.payload && action.payload.app ? action.payload.app : INIT_STATE;
-      return { ...state, lang: app.lang };
+      return { ...state, lang: app.lang, user: app.user };
     },
   },
 });

@@ -1,13 +1,15 @@
+/* eslint react-hooks/exhaustive-deps: 0*/
+
 import React, { useCallback, useState } from "react";
 import { createAccount } from "../../../Firebase/helpers";
-import history from "../../../history";
 import { SIGN_IN } from "../../../navRoutes";
 import BottomRedirect from "../components/BottomRedirect";
-import Button from "../components/Button";
 import Container from "../components/Container";
 import ErrorText from "../components/ErrorText";
 import Input from "../components/Input";
 import Loading from "../components/Loading";
+import SuccessWindow from "../components/SuccessWindow";
+import Title from "../components/Title";
 
 const isEmptyStr = (str: string) => str.length === 0;
 
@@ -19,13 +21,15 @@ export default () => {
   const [rPassword, setRPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const onError = useCallback((msg: string) => {
     setLoading(false);
     setError(msg);
   }, []);
   const onSucces = useCallback(() => {
     setLoading(false);
-    history.push(SIGN_IN);
+    setSuccess(true);
+    // history.push(SIGN_IN);
   }, []);
   const onSubmit = useCallback(
     (e) => {
@@ -54,8 +58,9 @@ export default () => {
     [email, name, lastName, password, rPassword]
   );
   return (
-    <Container title="Sign up">
-      <form onSubmit={onSubmit} className="auth-form">
+    <Container>
+      <form onSubmit={onSubmit} className="auth-form" autoComplete="off">
+        <Title title="Create account" />
         <Input
           label="Email"
           placeholder="Enter your email"
@@ -94,12 +99,13 @@ export default () => {
           type="password"
         />
         <div className="auth-button-container">
-          <Button>Sign up</Button>
+          <button className="auth-button">Sign up</button>
         </div>
       </form>
       <ErrorText>{error}</ErrorText>
       <BottomRedirect to={SIGN_IN} text={"Already have account?"} />
       {loading && <Loading />}
+      {success && <SuccessWindow />}
     </Container>
   );
 };
