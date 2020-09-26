@@ -1,0 +1,125 @@
+@import "../../utilities.scss";
+
+.auth {
+  &-container {
+    padding: $spacing-medium $spacing-medium $spacing-big $spacing-medium;
+    display: flex;
+    flex-direction: column;
+  }
+  &-header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-title {
+    display: flex;
+    align-self: center;
+    margin-top: $spacing-big;
+    justify-content: center;
+  }
+
+  &-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: $spacing-medium;
+    width: 100%;
+  }
+
+  &-input {
+    border-radius: $border-radius-normal;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-width: 0;
+    color: $primary-text-color;
+    font-size: $font-size-medium;
+    padding: $spacing-small;
+  }
+
+  &-input-label {
+    font-size: $font-size-medium;
+    margin-bottom: $spacing-small;
+  }
+
+  &-input:focus-visible {
+    border: none;
+  }
+
+  &-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: $spacing-medium;
+  }
+
+  &-button {
+    padding: $spacing-small;
+    background-color: $accent-color;
+    border-width: 0;
+    border-radius: $border-radius-normal;
+    font-size: $font-size-medium;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &-bottom-info {
+    text-decoration-line: underline;
+    font-size: $font-size-small;
+    color: $primary-text-color;
+    margin-top: $spacing-normal;
+    align-self: center;
+  }
+
+  &-error {
+    font-size: $font-size-small;
+    color: $error-color;
+    margin-top: $spacing-small;
+  }
+
+  @media (min-width: $primary-breakpoint) {
+    &-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      align-self: center;
+      margin-top: $spacing-medium;
+      background-color: $primary-color;
+      border-radius: $border-radius-normal;
+      padding-bottom: $spacing-big;
+    }
+    &-form {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+      align-items: center;
+    }
+  }
+  @media (max-width: $primary-breakpoint) {
+  }
+}
+
+@media (min-width: $primary-breakpoint) {
+  .sign-up-container {
+    width: 55%;
+    align-self: center;
+  }
+}
+
+@media (max-width: $primary-breakpoint) {
+  .sign-up-container {
+    width: 100%;
+    align-self: center;
+  }
+}
+
+.auth-loading-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+}
