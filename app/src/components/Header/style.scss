@@ -62,7 +62,7 @@ header {
       }
 
       .label {
-        max-width: 8rem;
+        max-width: 8.5rem;
       }
 
       &-space {
@@ -90,12 +90,12 @@ header {
 
     .login {
       font-weight: bold;
-      font-size: $font-size-medium;
+      font-size: $font-size-normal;
       border-width: 2px;
       border-color: white;
       border-style: solid;
       border-radius: $border-radius-normal;
-      padding: 0.3rem;
+      padding: 0.4rem;
       text-transform: none !important;
     }
 
@@ -110,7 +110,7 @@ header {
     width: 17px;
     height: 17px;
     border-radius: 15px;
-    background-color: #00aeff;
+    background-color: $accent-color;
     border: 2px solid $primary-text-color;
     font-size: $font-size-small;
     display: flex;
