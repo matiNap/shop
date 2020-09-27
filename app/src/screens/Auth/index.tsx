@@ -1,52 +1,58 @@
 import React from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Logo from "../../components/Logo";
-import history from "../../history";
-import { AUTH, SIGN_IN, SIGN_UP } from "../../navRoutes";
+import { MAIN, RESET_PASS, SIGN_IN, SIGN_UP } from "../../navRoutes";
 import { RootState } from "../../store";
-import { UserData } from "../../types";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import "./style.scss";
+import Forgot from "./Forgot";
+import LangSelector from "../../components/LangSelector";
 
-interface Props {
-  location: any;
-  user: UserData | null;
-}
+const AuthRoute = ({ children, ...rest }) => {
+  const user = useSelector((state: RootState) => state.app.user);
 
-class Auth extends React.Component<any> {
-  componentDidMount() {
-    const {
-      location: { pathname },
-    } = this.props;
-
-    // if (this.props.user) history.push(MAIN);
-
-    if (pathname === AUTH || pathname === `${AUTH}/`) history.push(SIGN_IN);
-  }
-
-  render() {
-    return (
-      <div className="auth-container">
-        <div className="auth-header">
-          <Logo />
-        </div>
-        <div className="route-screen">
-          <Switch>
-            <Route exact path={SIGN_UP} component={SignUp} />
-            <Route exact path={SIGN_IN} component={SignIn} />
-          </Switch>
-        </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state: RootState) => {
-  return {
-    user: state.app.user,
-  };
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        !user ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: MAIN,
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
 };
 
-export default connect(mapStateToProps)(withRouter(Auth));
+export default () => {
+  return (
+    <div className="auth-container">
+      <div className="auth-header">
+        <Logo />
+        <LangSelector />
+      </div>
+      <div className="route-screen">
+        <Switch>
+          <AuthRoute path={SIGN_UP}>
+            <SignUp />
+          </AuthRoute>
+          <AuthRoute path={SIGN_IN}>
+            <SignIn />
+          </AuthRoute>
+          <AuthRoute path={RESET_PASS}>
+            <Forgot />
+          </AuthRoute>
+          <Route path="*" component={() => <Redirect to={SIGN_IN} />} />
+        </Switch>
+      </div>
+    </div>
+  );
+};

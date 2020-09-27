@@ -3,8 +3,6 @@ import { REHYDRATE } from "redux-persist";
 import { UserData } from "../types";
 import firebase, { firestore } from "../Firebase";
 import { AppThunk } from "../store";
-import history from "../history";
-import { MAIN } from "../navRoutes";
 
 const INIT_STATE: {
   lang: string;
@@ -52,7 +50,6 @@ export const signIn = (
       const { uid } = data.user;
 
       const user = await firestore.collection("users").doc(uid).get();
-      history.push(MAIN);
       disaptch(setUser({ ...user.data(), uid }));
 
       onSuccess();

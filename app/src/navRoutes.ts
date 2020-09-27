@@ -7,5 +7,6 @@ export const ORDERS = `${MAIN}/orders`;
 export const AUTH = `${MAIN}/auth`;
 export const SIGN_IN = `${MAIN}/auth/sign-in`;
 export const SIGN_UP = `${MAIN}/auth/sign-up`;
+export const RESET_PASS = `${MAIN}/auth/password-reset`;
 
 // export const MEN_NEW_ARRIVALS

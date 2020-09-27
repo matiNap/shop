@@ -1,7 +1,7 @@
 /* eslint react-hooks/exhaustive-deps: 0*/
 
 import React, { useCallback, useState } from "react";
-import { SIGN_UP } from "../../../navRoutes";
+import { RESET_PASS, SIGN_UP } from "../../../navRoutes";
 import BottomRedirect from "../components/BottomRedirect";
 import Container from "../components/Container";
 import ErrorText from "../components/ErrorText";
@@ -59,6 +59,9 @@ export default () => {
           name="password"
           type="password"
         />
+        <div className="reset-pass-redirect">
+          <BottomRedirect to={RESET_PASS} text="Forgot password?" />
+        </div>
 
         <div className="auth-button-container">
           <button className="auth-button">Sign in</button>

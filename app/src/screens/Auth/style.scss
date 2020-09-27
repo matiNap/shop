@@ -23,7 +23,8 @@
   }
   &-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   &-title {
@@ -146,34 +147,37 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.auth-success-window {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .success-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $primary-color;
-    border-radius: $border-radius-normal;
-    padding: $spacing-medium;
-  }
-
-  .success-button {
+.success {
+  &-button {
     font-size: $font-size-medium;
     font-weight: bold;
     margin-top: $spacing-medium;
     width: 5rem;
   }
 
-  .success-icon {
-    color: $success-color;
+  &-icon {
+    color: $success-color !important;
     margin: $spacing-normal 0 $spacing-normal 0;
   }
+}
+.send-button {
+  margin-top: $spacing-medium;
+  font-size: $font-size-medium;
+  align-self: flex-end;
+}
+
+.reset-info {
+  font-size: $font-size-medium;
+  margin-top: $spacing-normal;
+}
+
+.popup-confirm-button {
+  margin-top: $spacing-medium;
+  font-size: $font-size-medium;
+}
+
+.reset-pass-redirect {
+  align-self: flex-end;
+  justify-content: flex-end;
+  display: flex;
 }

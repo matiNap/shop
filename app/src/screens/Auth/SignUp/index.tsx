@@ -29,7 +29,6 @@ export default () => {
   const onSucces = useCallback(() => {
     setLoading(false);
     setSuccess(true);
-    // history.push(SIGN_IN);
   }, []);
   const onSubmit = useCallback(
     (e) => {
