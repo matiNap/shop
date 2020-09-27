@@ -1,0 +1,183 @@
+@import "../../utilities.scss";
+
+@mixin input-style {
+  border-radius: $border-radius-normal;
+  background-color: darken($primary-color, 10%) !important;
+  border-width: 0;
+  color: $primary-text-color;
+  font-size: $font-size-medium;
+  padding: $spacing-small;
+}
+
+.route-screen {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.auth {
+  &-container {
+    padding: $spacing-medium $spacing-medium $spacing-big $spacing-medium;
+    display: flex;
+    flex-direction: column;
+  }
+  &-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-title {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: $spacing-medium;
+  }
+
+  &-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: $spacing-medium;
+    width: 100%;
+    input {
+      @include input-style();
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      @include input-style();
+      border: none;
+      -webkit-text-fill-color: $primary-text-color;
+      -webkit-box-shadow: 0 0 0px 1000px darken($primary-color, 10%) inset;
+    }
+  }
+
+  &-input-label {
+    font-size: $font-size-medium;
+    margin-bottom: $spacing-small;
+  }
+
+  &-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: $spacing-medium;
+  }
+
+  &-button {
+    font-size: $font-size-medium;
+    font-weight: bold;
+  }
+
+  &-bottom-info {
+    text-decoration-line: underline;
+    font-size: $font-size-small;
+    color: $primary-text-color;
+    margin-top: $spacing-normal;
+    align-self: center;
+  }
+
+  &-error {
+    font-size: $font-size-small;
+    color: $error-color;
+    margin-top: $spacing-small;
+  }
+
+  @media (min-width: $primary-breakpoint) {
+    &-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include box-shadow(0px 3px 14px 0px rgba(0, 0, 0, 0.75));
+      align-self: center;
+      margin-top: $spacing-medium;
+      background-color: $primary-color;
+      border-radius: $border-radius-normal;
+      padding-bottom: $spacing-big;
+    }
+    &-form {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+      align-items: center;
+    }
+  }
+  @media (max-width: $primary-breakpoint) {
+  }
+}
+
+@media (min-width: $primary-breakpoint) {
+  .route-container {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: $primary-breakpoint) {
+  .route-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+  }
+}
+
+.auth-loading-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.success {
+  &-button {
+    font-size: $font-size-medium;
+    font-weight: bold;
+    margin-top: $spacing-medium;
+    width: 5rem;
+  }
+
+  &-icon {
+    color: $success-color !important;
+    margin: $spacing-normal 0 $spacing-normal 0;
+  }
+}
+.send-button {
+  margin-top: $spacing-medium;
+  font-size: $font-size-medium;
+  align-self: flex-end;
+}
+
+.reset-info {
+  font-size: $font-size-medium;
+  margin-top: $spacing-normal;
+}
+
+.popup-confirm-button {
+  margin-top: $spacing-medium;
+  font-size: $font-size-medium;
+}
+
+.reset-pass-redirect {
+  align-self: flex-end;
+  justify-content: flex-end;
+  display: flex;
+}

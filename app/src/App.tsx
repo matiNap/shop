@@ -4,10 +4,11 @@ import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store, { persistedStore } from "./store";
 import Main from "./screens/Main";
-import { MAIN, MEN_HOME, WOMEN_HOME } from "./navRoutes";
+import { AUTH, MAIN, MEN_HOME, WOMEN_HOME } from "./navRoutes";
 
 import withNavigation from "./hocs/withNavigation";
 import "./style.scss";
+import Auth from "./screens/Auth";
 
 export default () => (
   <Provider store={store}>
@@ -29,6 +30,7 @@ export default () => (
               return <div>Women home</div>;
             })}
           />
+          <Route path={AUTH} component={Auth} />
         </Switch>
       </Router>
     </PersistGate>
